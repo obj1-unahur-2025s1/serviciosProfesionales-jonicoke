@@ -39,7 +39,7 @@ class Empresa {
   method empleados() = empleados
   method contratar(profesional) = empleados.add(profesional)
   method cuantosEstudiaronEn(uni) = empleados.filter({x=>x.universidad() == uni}).size()
-  method conjuntoCaros() = empleados.map({e=>e.universidad()}).map({e=>e.nombre()}).asSet()
+  method conjuntoCaros() = empleados.filter({e=>e.honorarios() > self.honorarios()}).map({e=>e.nombre()}).asSet()
   method profesionalBarato() = #{empleados.min({e=>e.honorarios()}).nombre()}
   method uniFormadoras() = empleados.map({e=>e.universidad()})
   method esDeGenteAcotada() = empleados.all({e=>e.dondePuedeTrabajar().size() >= 3})

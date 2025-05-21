@@ -7,18 +7,18 @@ describe "Test etapa 1 " {
     var uniCorrientes = new Universidad(nombre = "uni Corrientes", honorarios = 4200, provincia = "Corrientes")
     var uniHurlingham = new Universidad(nombre = "uni Hurlingham", honorarios = 8800, provincia = "Buenos Aires")
     
-    var Juana = new ProfesionalVinculado(nombre = "Juana", universidad = uniRosario)
-    var Melina = new ProfesionalAsociado(nombre = "Melina", universidad = uniCorrientes)  
-    var Rocio = new ProfesionalLibre(nombre = "Rocio", universidad = uniHurlingham, honorarios = 5000, provincias = #{'Buenos Aires', 'Santa Fe', 'Cordoba'})
-    var Luciana = new ProfesionalLibre(nombre = "Luciana", universidad = uniRosario, honorarios = 3200, provincias = #{'Entre Ríos', 'Santa Fe'})
+    var juana = new ProfesionalVinculado(nombre = "Juana", universidad = uniRosario)
+    var melina = new ProfesionalAsociado(nombre = "Melina", universidad = uniCorrientes)  
+    var rocio = new ProfesionalLibre(nombre = "Rocio", universidad = uniHurlingham, honorarios = 5000, provincias = #{'Buenos Aires', 'Santa Fe', 'Cordoba'})
+    var luciana = new ProfesionalLibre(nombre = "Luciana", universidad = uniRosario, honorarios = 3200, provincias = #{'Entre Ríos', 'Santa Fe'})
 
     var empresaFORD = new Empresa(honorarios = 3500)
 
   method initialize() {
-    empresaFORD.contratar(Juana)
-    empresaFORD.contratar(Melina)
-    empresaFORD.contratar(Rocio)
-    empresaFORD.contratar(Luciana)
+    empresaFORD.contratar(juana)
+    empresaFORD.contratar(melina)
+    empresaFORD.contratar(rocio)
+    empresaFORD.contratar(luciana)
   }
   test "dos de sus profesionales estudiaron en Rosario" {
     assert.equals(empresaFORD.cuantosEstudiaronEn(uniRosario), 2)
@@ -28,5 +28,8 @@ describe "Test etapa 1 " {
   }
   test "ninguno de sus profesionales estudiaron en san martin" {
     assert.equals(empresaFORD.cuantosEstudiaronEn(uniSanMartin), 0)
+  }
+  test "como profesionales caros, solamente a Rocío" {
+    assert.equals(empresaFORD.conjuntoCaros(), #{rocio.nombre()})
   }
 }
