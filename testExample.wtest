@@ -32,4 +32,10 @@ describe "Test etapa 1 " {
   test "como profesionales caros, solamente a Rocío" {
     assert.equals(empresaFORD.conjuntoCaros(), #{rocio.nombre()})
   }
+  test "como universidades formadoras, a las de Rosario, Corrientes y Hurlingham."{
+    assert.equals(empresaFORD.uniFormadoras(), #{uniRosario, uniCorrientes, uniHurlingham})
+  }
+  test "como profesional más barato a Juana." {
+    assert.equals(empresaFORD.profesionalBarato(), #{juana.nombre()})
+  }
 }

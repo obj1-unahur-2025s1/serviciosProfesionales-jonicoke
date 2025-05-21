@@ -41,6 +41,6 @@ class Empresa {
   method cuantosEstudiaronEn(uni) = empleados.filter({x=>x.universidad() == uni}).size()
   method conjuntoCaros() = empleados.filter({e=>e.honorarios() > self.honorarios()}).map({e=>e.nombre()}).asSet()
   method profesionalBarato() = #{empleados.min({e=>e.honorarios()}).nombre()}
-  method uniFormadoras() = empleados.map({e=>e.universidad()})
+  method uniFormadoras() = empleados.map({e=>e.universidad()}).asSet()
   method esDeGenteAcotada() = empleados.all({e=>e.dondePuedeTrabajar().size() >= 3})
 }
