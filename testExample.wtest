@@ -1,9 +1,32 @@
-import example.pepita
+import profesionales.*
 
-describe "group of tests for pepita" {
+describe "Test etapa 1 " {
+  
+    var uniSanMartin = new Universidad(nombre = "uni San Martin", honorarios = 3500, provincia = "Buenos Aires")
+    var uniRosario = new Universidad(nombre = "uni Rosario", honorarios = 2800, provincia = "Santa Fe")
+    var uniCorrientes = new Universidad(nombre = "uni Corrientes", honorarios = 4200, provincia = "Corrientes")
+    var uniHurlingham = new Universidad(nombre = "uni Hurlingham", honorarios = 8800, provincia = "Buenos Aires")
+    
+    var Juana = new ProfesionalVinculado(nombre = "Juana", universidad = uniRosario)
+    var Melina = new ProfesionalAsociado(nombre = "Melina", universidad = uniCorrientes)  
+    var Rocio = new ProfesionalLibre(nombre = "Rocio", universidad = uniHurlingham, honorarios = 5000, provincias = #{'Buenos Aires', 'Santa Fe', 'Cordoba'})
+    var Luciana = new ProfesionalLibre(nombre = "Luciana", universidad = uniRosario, honorarios = 3200, provincias = #{'Entre Ríos', 'Santa Fe'})
 
-  test "pepita has initial energy" {
-    assert.equals(100, pepita.energy())
+    var empresaFORD = new Empresa(honorarios = 3500)
+
+  method initialize() {
+    empresaFORD.contratar(Juana)
+    empresaFORD.contratar(Melina)
+    empresaFORD.contratar(Rocio)
+    empresaFORD.contratar(Luciana)
   }
-
+  test "dos de sus profesionales estudiaron en Rosario" {
+    assert.equals(empresaFORD.cuantosEstudiaronEn(uniRosario), 2)
+  }
+   test "uno de sus profesionales estudiaron en hurlingham" {
+    assert.equals(empresaFORD.cuantosEstudiaronEn(uniHurlingham), 1)
+  }
+  test "ninguno de sus profesionales estudiaron en san martin" {
+    assert.equals(empresaFORD.cuantosEstudiaronEn(uniSanMartin), 0)
+  }
 }
