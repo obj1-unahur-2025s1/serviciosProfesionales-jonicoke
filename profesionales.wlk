@@ -78,6 +78,14 @@ class Empresa {
       clientes.add(solicitante.nombre())
     }
   }
+  method cuantosEmpleadosHay() = empleados.size()
+  method existeEsteCliente(solicitante) = clientes.contains(solicitante)
+  method esPocoAtractivo(profesional) {
+      empleados.filter({e=>e.dondePuedeTrabajar()})
+      profesional.dondePuedeTrabajar()
+  
+  }
+    
 }
 class Persona {
   const nombre
